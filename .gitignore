@@ -1,0 +1,27 @@
+# Model checkpoints
+checkpoints/
+
+# Generated submission zips
+submission_*.zip
+
+# Pre-trained weights
+pretrained/
+
+# Data and pre-extracted features
+Data/
+
+# Generated CSV outputs
+csv_files/submission/
+
+# SLURM job logs
+jobs/
+*.log
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Editor / OS
+.DS_Store
+*.swp
