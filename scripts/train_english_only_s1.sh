@@ -1,21 +1,11 @@
 #!/bin/bash
-#SBATCH --job-name=polysim_en_only_moretrain
-#SBATCH --error=jobs/train_english_only_moretrain_error_%j.log
-#SBATCH --output=jobs/train_english_only_moretrain_out_%j.log
-#SBATCH -p gpu
-#SBATCH --gres=gpu:1
-#SBATCH --time=08:00:00
-#SBATCH --account=res_secure-razbhz05jcm-default-gpu
-
-module load Anaconda3/2020.11
-module load CUDA/11.3.1
 source ~/.bashrc
 
 conda activate polysim   # update to your env name/path
 export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:$CONDA_PREFIX/lib64:${LD_LIBRARY_PATH:-}"
 
 BASE="$(cd "$(dirname "$0")/.." && pwd)"   # repo root (one level up from scripts/)
-CKPT_NAME="v1_masked_fop_English_linear_drop0.5_english_only_moretrain"
+CKPT_NAME="v1_masked_fop_English_linear_drop0.5_english_only_s1"
 
 cd "$BASE"
 
