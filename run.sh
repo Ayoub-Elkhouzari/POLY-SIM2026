@@ -2,7 +2,7 @@
 # Full pipeline to reproduce the best submission (score 0.9989 on eval phase).
 #
 # Steps:
-#   1. Train two models (moretrain + s2) on English data only
+#   1. Train two models (s1 + s2) on English data only
 #   2. Run Graph LP inference with averaged embeddings
 #   3. Apply face-NN surgical patches (P4 + P6)
 #   4. Apply Rtva1JyiNb cross-seed patch (P5 + P6)
@@ -18,9 +18,9 @@ CKPT="$REPO/checkpoints"
 # Submit both training jobs to SLURM (each ~4-6 hours on 1 GPU).
 # They can run in parallel.
 
-echo "[1a] Submitting moretrain job (seed=1, val_frac=0.05, patience=30)..."
-sbatch scripts/train_english_only_moretrain.sh
-# → checkpoints/v1_masked_fop_English_linear_drop0.5_english_only_moretrain_best.pt
+echo "[1a] Submitting s1 job (seed=1, val_frac=0.05, patience=30)..."
+sbatch scripts/train_english_only_s1.sh
+# → checkpoints/v1_masked_fop_English_linear_drop0.5_english_only_s1_best.pt
 
 echo "[1b] Submitting s2 job (seed=2, val_frac=0.1)..."
 sbatch scripts/train_english_only_s2.sh
@@ -31,12 +31,12 @@ echo "(Re-run the steps below manually once both checkpoints exist.)"
 exit 0
 
 # ── Step 2: Graph LP inference ────────────────────────────────────────────────
-# Average audio embeddings from moretrain + s2, then run cascaded transductive LP.
+# Average audio embeddings from s1 + s2, then run cascaded transductive LP.
 # k=7, fused_alpha=0.65, transductive P4/P6 centroids from P3/P5 pseudo-labels.
 
 cd "$REPO"
 python submit_graphlp.py \
-    --ckpt   "$CKPT/v1_masked_fop_English_linear_drop0.5_english_only_moretrain_best.pt" \
+    --ckpt   "$CKPT/v1_masked_fop_English_linear_drop0.5_english_only_s1_best.pt" \
     --split  test \
     --mode   p3_smooth \
     --k      7 \

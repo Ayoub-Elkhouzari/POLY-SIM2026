@@ -5,7 +5,7 @@ conda activate polysim   # update to your env name/path
 export LD_LIBRARY_PATH="$CONDA_PREFIX/lib:$CONDA_PREFIX/lib64:${LD_LIBRARY_PATH:-}"
 
 BASE="$(cd "$(dirname "$0")/.." && pwd)"   # repo root (one level up from scripts/)
-CKPT_NAME="v1_masked_fop_English_linear_drop0.5_english_only_moretrain"
+CKPT_NAME="v1_masked_fop_English_linear_drop0.5_english_only_s1"
 
 cd "$BASE"
 

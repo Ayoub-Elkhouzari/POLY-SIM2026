@@ -1,11 +1,11 @@
 ## Polyglot Speaker Identification with Missing Modality
-[Challenge Webpage](https://mmosc.github.io/fame2027.github.io/index.html#home)  
+[Challenge Webpage](https://mmosc.github.io/fame2027.github.io/index.html#home)
 
-[Evaluation Plan](https://arxiv.org/abs/2603.24569) 
+[Evaluation Plan](https://arxiv.org/abs/2603.24569)
 
-[Registration](https://docs.google.com/forms/d/e/1FAIpQLSde1K3fV89P_KCHE8RGM8XY0znP8BY44JQP8AEf9Idi-jdWdg/viewform) 
+[Registration](https://docs.google.com/forms/d/e/1FAIpQLSde1K3fV89P_KCHE8RGM8XY0znP8BY44JQP8AEf9Idi-jdWdg/viewform)
 
-[Leader Board](https://www.codabench.org/competitions/11283/) 
+[Leader Board](https://www.codabench.org/competitions/11283/)
 
 ---
 
@@ -31,9 +31,9 @@ The POLYSIM 2026 challenge addresses **closed-set speaker classification** using
 
 The goal is to classify a speaker’s identity from a given sample under the following real-world challenges:
 
-- One modality (face) may be **completely missing** at test time  
-- The **test language may differ** from the training language  
-- A **single unified model** must be used across all conditions  
+- One modality (face) may be **completely missing** at test time
+- The **test language may differ** from the training language
+- A **single unified model** must be used across all conditions
 
 Participants are required to design models that are **robust, modality-agnostic, and cross-lingual**.
 
@@ -44,41 +44,41 @@ Participants are required to design models that are **robust, modality-agnostic,
 The challenge consists of **four task settings**, covering multimodal, missing-modality, and cross-lingual scenarios.
 
 ### P3: In-Language Multimodal
-- **Training**: Audio + Face  
-- **Testing**: Audio + Face  
-- **Language**: Same  
+- **Training**: Audio + Face
+- **Testing**: Audio + Face
+- **Language**: Same
 
 Standard multimodal speaker classification setting.
 
 ---
 
 ### P4: Missing-Modality (Audio-Only)
-- **Training**: Audio + Face  
-- **Testing**: Audio only  
-- **Language**: Same  
+- **Training**: Audio + Face
+- **Testing**: Audio only
+- **Language**: Same
 
-The face modality is completely missing at test time.  
+The face modality is completely missing at test time.
 **No retraining is allowed.**
 
 ---
 
 ### P5: Cross-Lingual Multimodal
-- **Training**: Audio + Face  
-- **Testing**: Audio + Face  
-- **Language**: Different  
+- **Training**: Audio + Face
+- **Testing**: Audio + Face
+- **Language**: Different
 
 Evaluates cross-lingual generalization with full modality availability.
 
 ---
 
 ### P6: Cross-Lingual Missing-Modality
-- **Training**: Audio + Face  
-- **Testing**: Audio only  
-- **Language**: Different  
+- **Training**: Audio + Face
+- **Testing**: Audio only
+- **Language**: Different
 
 The most challenging setting, combining:
-- Cross-lingual testing  
-- Missing face modality at inference  
+- Cross-lingual testing
+- Missing face modality at inference
 
 ---
 
@@ -126,12 +126,12 @@ The most challenging setting, combining:
 The dataset MavCeleb consists of **paired speech audio and face images/video frames** collected from multiple speakers across **multiple languages**.
 
 ### Modalities
-- **Audio**: Speech segments  
-- **Visual**: Face images or face tracks  
-- **Labels**: Speaker ID  
+- **Audio**: Speech segments
+- **Visual**: Face images or face tracks
+- **Labels**: Speaker ID
 
 ### Data Splits
-- Training set - [Raw data](https://drive.google.com/file/d/1bRFbL9jOcmauEMJlEN_-4DvbpL2SFwlz/view?usp=sharing), [features](https://drive.google.com/file/d/11gjdlJgRxWcoNU9h-xlD8W0171Q6nvAA/view?usp=sharing), [CSV file](https://drive.google.com/file/d/1V_Wctz02J1wA47rTAZ3uIXiCkw9rYDQd/view?usp=sharing) 
+- Training set - [Raw data](https://drive.google.com/file/d/1bRFbL9jOcmauEMJlEN_-4DvbpL2SFwlz/view?usp=sharing), [features](https://drive.google.com/file/d/11gjdlJgRxWcoNU9h-xlD8W0171Q6nvAA/view?usp=sharing), [CSV file](https://drive.google.com/file/d/1V_Wctz02J1wA47rTAZ3uIXiCkw9rYDQd/view?usp=sharing)
 - Dev set  (labels hidden) - [Raw data](https://drive.google.com/file/d/1JRkgFKUo0hVdnPaT8JsrSn06C1hl8g89/view?usp=sharing), [features](https://drive.google.com/file/d/19smDBY2fcvR-vXML2UjGrWc0XyfDO3-l/view?usp=sharing), [CSV file](https://drive.google.com/file/d/1V_Wctz02J1wA47rTAZ3uIXiCkw9rYDQd/view?usp=sharing)
 - Test set (labels hidden) - ![Coming Soon](https://img.shields.io/badge/status-coming%20soon-red)
 
@@ -146,15 +146,15 @@ The dataset MavCeleb consists of **paired speech audio and face images/video fra
 
 The goal of evaluation is to study:
 
-- Multimodal speaker classification performance  
-- Robustness to **missing face modality**  
-- Generalization across **unseen languages**  
+- Multimodal speaker classification performance
+- Robustness to **missing face modality**
+- Generalization across **unseen languages**
 
 ### Metrics
 - **Accuracy**
 
 ### Ranking
-- Metrics are computed **separately** for P3, P4, P5, and P6  
+- Metrics are computed **separately** for P3, P4, P5, and P6
 - **Final ranking** is based on the **average score** across all settings
 
 ---
@@ -169,7 +169,7 @@ The goal of evaluation is to study:
 - submission_v1_<phase>_English_Urdu.csv
 ```
 
-Where `<phase>` is val (dev) or test (eval). 
+Where `<phase>` is val (dev) or test (eval).
 
 ---
 
@@ -200,7 +200,7 @@ python sweep_run.py \
     --alpha             0.5 \
     --val_frac          0.05 \
     --seed              1 \
-    --ckpt_name         v1_masked_fop_English_linear_drop0.5_english_only_moretrain
+    --ckpt_name         v1_masked_fop_English_linear_drop0.5_english_only_s1
 ```
 
 We train two independent seeds (`seed=1` with `val_frac=0.05`, `seed=2` with `val_frac=0.1`) and average their audio embeddings at inference for improved generalisation.
@@ -222,18 +222,18 @@ Key hyperparameters:
 
 Inference uses `submit_graphlp.py` with the following pipeline:
 
-**Step 1 — Multi-seed audio embedding averaging**  
+**Step 1 — Multi-seed audio embedding averaging**
 Audio embeddings (`audio_e`) from two independently trained models (seed=1, seed=2) are averaged and L2-normalised. This reduces model-specific noise and improves centroid quality.
 
-**Step 2 — Fused-embedding LP for P3/P5**  
+**Step 2 — Fused-embedding LP for P3/P5**
 A K-NN affinity graph (k=7) is built over the fused test embeddings (face+audio). Label spreading (α=0.65, 50 iterations) from training prototypes refines the initial P3/P5 predictions. This exploits the face modality where available.
 
-**Step 3 — Transductive centroid NN for P4/P6**  
+**Step 3 — Transductive centroid NN for P4/P6**
 P3/P5 pseudo-labels (99.8% accurate on English) are used to build per-class audio centroids directly from the test set. P4 and P6 predictions are then assigned by cosine nearest-neighbour to these in-domain centroids, avoiding the train/test distribution shift of using training prototypes.
 
 ```bash
 python submit_graphlp.py \
-    --ckpt   checkpoints/v1_masked_fop_English_linear_drop0.5_english_only_moretrain_best.pt \
+    --ckpt   checkpoints/v1_masked_fop_English_linear_drop0.5_english_only_s1_best.pt \
     --split  test \
     --mode   p3_smooth \
     --k      7  --fused_alpha 0.65 \
@@ -302,7 +302,7 @@ torchvision   0.21.0+cu124
 └── config.py
 ```
 
-## Reference 
+## Reference
 
 ```BibTeX
 @inproceedings{saeed2022fusion,
@@ -332,4 +332,3 @@ torchvision   0.21.0+cu124
   year      = {2021}
 }
 ```
-
